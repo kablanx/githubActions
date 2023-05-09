@@ -1,6 +1,9 @@
 name: deploy
 run-name: ${{ github.actor }} is deploying with GitHub Actions 🚀
 on: push
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 jobs:
   deploy:
     name: deploy to cluster
@@ -18,10 +21,11 @@ jobs:
           tags: ${{github.sha}}
       - name: echo de secretos
         run: |
-          echo "The secret DOCKER_USERNAME is ${{secrets.DOCKER_USERNAME}}"
-          echo "The secret DOCKER_PASSWORD is ${{secrets.DOCKER_PASSWORD}}"
+          echo "The secret DOCKER_USERNAME is $DOCKER_USERNAME"
+          echo "The secret DOCKER_PASSWORD is $DOCKER_PASSWORD"
           echo "The github.actor is ${{github.actor}}"
           echo "The secret github.token is ${{github.token}}"
+          echo "The secret pass is ${{github.secret_source.DOCKER_PASSWORD}}"
       - run: echo "hola"
 
   push_to_registry:
@@ -35,7 +39,7 @@ jobs:
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.secret_source.DOCKER_PASSWORD }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
