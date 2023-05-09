@@ -17,4 +17,5 @@ jobs:
           tag_with_sha: true
           tags: ${{github.sha}}
       - name: echo de secretos
-        run: echo "The ${{github.secret_source.DOCKER_USERNAME}}"
+        run: |
+          echo "The secret is ${{secrets.DOCKER_PASSWORD}}"
