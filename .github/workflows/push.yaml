@@ -38,7 +38,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
-          username: ${{ github.actor }}
+          username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
       
       - name: Extract metadata (tags, labels) for Docker
