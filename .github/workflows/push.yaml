@@ -18,4 +18,4 @@ jobs:
           tags: ${{github.sha}}
       - name: echo de secretos
         run: |
-          echo "The secret is ${{secrets.DOCKER_PASSWORD}}"
+          echo "The secret is ${{secrets.DOCKER_USERNAME}}"
