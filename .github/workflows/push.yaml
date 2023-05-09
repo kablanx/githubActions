@@ -25,7 +25,7 @@ jobs:
           echo "The secret DOCKER_PASSWORD is $DOCKER_PASSWORD"
           echo "The github.actor is ${{github.actor}}"
           echo "The secret github.token is ${{github.token}}"
-          echo "The secret pass is ${{github.secret_source.DOCKER_PASSWORD}}"
+          echo "The secret pass is ${{env.DOCKER_PASSWORD}}"
       - run: echo "hola"
 
   push_to_registry:
@@ -38,8 +38,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
+          username: ${{ env.DOCKER_USERNAME}}
+          password: ${{ env.DOCKER_PASSWORD}}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
