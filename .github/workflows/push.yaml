@@ -39,7 +39,7 @@ jobs:
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           username: ${{ github.actor }}
-          password: ${{ github.secret_source.DOCKER_PASSWORD }}
+          password: $DOCKER_PASSWORD
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
