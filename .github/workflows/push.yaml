@@ -52,5 +52,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: my-registry.com/my-repo/my-image:latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
