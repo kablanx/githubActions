@@ -12,6 +12,7 @@ jobs:
       - name: Step Hola Mundo
         id: hello
         uses: kablanx/githubActions/action.yml@master
+        with:  
           who-to-greet: "Sebi"
       - name: Usar el output
         run: echo "La fecha fue ${{ steps.hello.outputs.time}}"
