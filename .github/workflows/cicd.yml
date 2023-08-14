@@ -1,0 +1,18 @@
+on:
+  push:
+  workflow_dispatch:
+name: action
+jobs:
+  hello-world:
+    name: Un job para saludar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Step Hola Mundo
+        id: hello
+        uses: kablanx/githubActions/action.yml
+        with:
+          who-to-greet: "Sebi"
+      - name: Usar el output
+        run: echo "La fecha fue ${{ steps.hello.outputs.time}}"
