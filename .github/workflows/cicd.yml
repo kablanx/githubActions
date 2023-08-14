@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Step Hola Mundo
         id: hello
-        uses: kablanx/githubActions/action.yml@master
+        uses: ./action.yml
         with:  
           who-to-greet: "Sebi"
       - name: Usar el output
