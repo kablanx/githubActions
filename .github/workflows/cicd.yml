@@ -11,8 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Step Hola Mundo
         id: hello
-        uses: kablanx/githubActions/action.yml
-        with:
+        uses: ./action.yml
           who-to-greet: "Sebi"
       - name: Usar el output
         run: echo "La fecha fue ${{ steps.hello.outputs.time}}"
