@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run My Action
-        uses: ./.github/workflows/reusable_worflow.yml
+        uses: ./reusable_worflow.yml
         with:
           environment: ${{ inputs.ENVIRONMENT }}
 
