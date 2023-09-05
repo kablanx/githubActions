@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run My Action
-        uses: kablanx/githubActions/.github/workflows/reusable_worflow.yml@master
+        uses: ./reusable_worflow.yml@master
         with:
           environment: ${{ inputs.ENVIRONMENT }}
 
