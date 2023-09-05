@@ -1,0 +1,52 @@
+name: Leer configuración desde configuration.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        type: choice
+        default: DEV
+          options:
+            - DEV
+            - PRE
+            - PRO
+jobs:
+  mostrar-mensaje:
+    runs-on: ubuntu-latest
+    run: |
+      echo "hola esto está funcionando"
+  read-configuration:
+    uses: #workflow reusable
+    with:
+      ENVIRONMENT: ${{ inputs.environment }}
+    secrets: inherit
+
+
+    # runs-on: ubuntu-latest
+
+    # steps:
+    # - name: Checkout el código fuente
+    #   uses: actions/checkout@v2
+
+    # - name: Establecer la variable de entorno
+    #   run: |
+    #     # Obtén la variable de entorno 'ENVIRONMENT' (puedes cambiar el nombre según tu necesidad)
+    #     ENVIRONMENT="${{ github.event.inputs.ENVIRONMENT }}"
+    #     echo "Entorno seleccionado: $ENVIRONMENT"
+    #     # Leer el archivo configuration.json y asignar los valores a variables de entorno
+    #     API_URL=$(jq -r ".[$ENVIRONMENT].api_url" configuration.json)
+    #     API_KEY=$(jq -r ".[$ENVIRONMENT].api_key" configuration.json)
+    #     echo "API URL: $API_URL"
+    #     echo "API Key: $API_KEY"
+    #     # Establecer las variables de entorno para su uso posterior
+    #     echo "::set-env name=API_URL::$API_URL"
+    #     echo "::set-env name=API_KEY::$API_KEY"
+
+    #   env:
+    #     ENVIRONMENT: ${{ github.event.inputs.ENVIRONMENT }}
+
+    # - name: Mostrar valores de configuración
+    #   run: |
+    #     echo "API URL: $API_URL"
+    #     echo "API Key: $API_KEY"
