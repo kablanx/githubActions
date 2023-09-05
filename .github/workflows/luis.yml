@@ -7,20 +7,27 @@ on:
         description: Environment
         type: choice
         default: DEV
-          options:
-            - DEV
-            - PRE
-            - PRO
+        options:
+          - DEV
+          - PRE
+          - PRO
 jobs:
   mostrar-mensaje:
     runs-on: ubuntu-latest
-    run: |
-      echo "hola esto está funcionando"
+    steps:
+      - name: Mostrar mensaje
+        run: |
+          echo "hola esto está funcionando"
   read-configuration:
-    uses: #workflow reusable
-    with:
-      ENVIRONMENT: ${{ inputs.environment }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run My Action
+        uses: ./reusable_workflow.yml@latest
+        with:
+          environment: ${{ inputs.ENVIRONMENT }}
 
 
     # runs-on: ubuntu-latest

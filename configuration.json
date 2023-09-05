@@ -1,0 +1,10 @@
+{
+  "production": {
+    "value1": "production_value1",
+    "value2": "production_value2"
+  },
+  "development": {
+    "value1": "development_value1",
+    "value2": "development_value2"
+  }
+}
