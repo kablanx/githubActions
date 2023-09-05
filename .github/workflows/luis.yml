@@ -19,15 +19,17 @@ jobs:
         run: |
           echo "hola esto está funcionando"
   read-configuration:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    uses: ./.github/workflows/reusable_worflow.yml
+    with:
+      environment: ${{ inputs.ENVIRONMENT }}
+    # steps:
+    #   - name: Checkout code
+    #     uses: actions/checkout@v2
 
-      - name: Run My Action
-        uses: ./.github/workflows/reusable_worflow.yml@master
-        with:
-          environment: ${{ inputs.ENVIRONMENT }}
+    #   - name: Run My Action
+        
+    #     with:
+    #       environment: ${{ inputs.ENVIRONMENT }}
 
 
     # runs-on: ubuntu-latest
